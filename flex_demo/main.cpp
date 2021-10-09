@@ -15,12 +15,13 @@ int main(int argc, char **argv)
         yyin = stdin;
     }
 
+    cout<<"ROW      "<<"COL     "<<"TYPE                "<<"TOKEN/ERROR MESSAGE"<<endl;
     while (true){
         int n = yylex();
         if (n == T_EOF){
             break;
         }
-        cout << yytext << endl;
+        //cout << yytext << endl;
     }
     
     return 0;
