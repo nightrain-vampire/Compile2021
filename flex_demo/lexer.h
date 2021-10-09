@@ -2,8 +2,13 @@
 #define _LEXER_H_
 
 #define T_EOF 0
-#define ADD 1
-#define SUB 2
-#define NUMBER 3
+#define RESERVED 1
+#define INTEGER 2
+#define REAL 3
+#define STRING 4
+#define IDENTIFIER 5
+#define OPERATOR 6
+#define DELIMITER 7
+#define UNKNOWN 100
 
 #endif
