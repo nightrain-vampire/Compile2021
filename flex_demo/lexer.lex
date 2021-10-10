@@ -22,6 +22,7 @@ STRING          \"[^\"]*\"
 OPERATOR	    \:\=|\+|\-|\*|\/|\<|\<\=|\>|\>\=|\=|\<\>
 DELIMITER       \:|\;|\,|\.|\(|\)|\[|\]|\{|\}|\[\<|\>\]|\]
 ID		        {LETTER}+({LETTER}|{DIGIT})*
+COMMENT         [\(][\*][^\*(?=\))]*[\*][\)]
 
 %%
 {WS}        {cols += yyleng;}
@@ -35,5 +36,6 @@ ID		        {LETTER}+({LETTER}|{DIGIT})*
 {DELIMITER}             {tokens_num++;  return DELIMITER;}
 {ID}                    {tokens_num++;  return IDENTIFIER;}
 .                       {tokens_num++;  return UNKNOWN;}
+{COMMENT}  {cols += yyleng;}
 %%
 
