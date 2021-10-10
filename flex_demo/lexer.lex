@@ -28,7 +28,6 @@ COMMENT         [\(][\*][^\*(?=\))]*[\*][\)]
 {WS}        {cols += yyleng;}
 <<EOF>>     return T_EOF;
 {NEW_LINE}              {rows++; cols = 1;}
-{COMMENT}               {return COMMENT;}
 {STRING}                {tokens_num++;  return STRING;}
 {INTEGER}			    {tokens_num++;  return INTEGER;}
 {OPERATOR}		        {tokens_num++;  return OPERATOR;}
@@ -37,5 +36,6 @@ COMMENT         [\(][\*][^\*(?=\))]*[\*][\)]
 {DELIMITER}             {tokens_num++;  return DELIMITER;}
 {ID}                    {tokens_num++;  return IDENTIFIER;}
 .                       {tokens_num++;  return UNKNOWN;}
+{COMMENT}  {cols += yyleng; return COMMENT;}
 %%
 

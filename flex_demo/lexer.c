@@ -366,16 +366,16 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[98] =
     {   0,
-        0,    0,   13,   11,    1,    2,   11,    9,    9,    6,
-        5,    9,    6,    6,   10,   10,   10,   10,   10,   10,
-       10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
-        9,    9,    1,    0,    4,    0,    7,    5,    6,    9,
-       10,   10,   10,   10,   10,    8,   10,   10,   10,   10,
-       10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
-       10,   10,    0,    0,    7,   10,   10,   10,   10,   10,
-       10,   10,   10,   10,   10,   10,   10,   10,    3,   10,
-       10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
-       10,   10,   10,   10,   10,   10,    0
+        0,    0,   13,   10,    1,    2,   10,    8,    8,    5,
+        4,    8,    5,    5,    9,    9,    9,    9,    9,    9,
+        9,    9,    9,    9,    9,    9,    9,    9,    9,    9,
+        8,    8,    1,    0,    3,    0,    6,    4,    5,    8,
+        9,    9,    9,    9,    9,    7,    9,    9,    9,    9,
+        9,    9,    9,    9,    9,    9,    9,    9,    9,    9,
+        9,    9,    0,    0,    6,    9,    9,    9,    9,    9,
+        9,    9,    9,    9,    9,    9,    9,    9,   11,    9,
+        9,    9,    9,    9,    9,    9,    9,    9,    9,    9,
+        9,    9,    9,    9,    9,    9,    0
 
     } ;
 
@@ -836,48 +836,48 @@ case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
 #line 31 "lexer.lex"
-{return COMMENT;}
+{tokens_num++;  return STRING;}
 	YY_BREAK
 case 4:
-/* rule 4 can match eol */
 YY_RULE_SETUP
 #line 32 "lexer.lex"
-{tokens_num++;  return STRING;}
+{tokens_num++;  return INTEGER;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 33 "lexer.lex"
-{tokens_num++;  return INTEGER;}
+{tokens_num++;  return OPERATOR;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 34 "lexer.lex"
-{tokens_num++;  return OPERATOR;}
+{tokens_num++;  return REAL;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 35 "lexer.lex"
-{tokens_num++;  return REAL;}
+{tokens_num++;  return RESERVED;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 36 "lexer.lex"
-{tokens_num++;  return RESERVED;}
+{tokens_num++;  return DELIMITER;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 37 "lexer.lex"
-{tokens_num++;  return DELIMITER;}
+{tokens_num++;  return IDENTIFIER;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 38 "lexer.lex"
-{tokens_num++;  return IDENTIFIER;}
+{tokens_num++;  return UNKNOWN;}
 	YY_BREAK
 case 11:
+/* rule 11 can match eol */
 YY_RULE_SETUP
 #line 39 "lexer.lex"
-{tokens_num++;  return UNKNOWN;}
+{cols += yyleng;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
