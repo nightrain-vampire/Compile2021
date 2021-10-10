@@ -536,15 +536,12 @@ char *yytext;
 #include "iostream"
 #include "string"
 
-#define inter1 string(10-to_string(rows).size(),' ')
-#define inter2 string(10-to_string(cols).size(),' ')
-
 using namespace std;
 int tokens_num = 0;
 int cols = 1;
 int rows = 1;
-#line 547 "lexer.c"
-#line 548 "lexer.c"
+#line 544 "lexer.c"
+#line 545 "lexer.c"
 
 #define INITIAL 0
 
@@ -759,9 +756,9 @@ YY_DECL
 		}
 
 	{
-#line 29 "lexer.lex"
+#line 26 "lexer.lex"
 
-#line 765 "lexer.c"
+#line 762 "lexer.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -820,66 +817,66 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 30 "lexer.lex"
+#line 27 "lexer.lex"
 {cols += yyleng;}
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 31 "lexer.lex"
+#line 28 "lexer.lex"
 return T_EOF;
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 32 "lexer.lex"
+#line 29 "lexer.lex"
 {rows++; cols = 1;}
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 33 "lexer.lex"
-{tokens_num++; cout<<rows<<inter1<<cols<<inter2<<"string"<<string(25-6,' ')<<yytext<<endl; cols += yyleng; return STRING;}
+#line 30 "lexer.lex"
+{tokens_num++;  return STRING;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 34 "lexer.lex"
-{tokens_num++; cout<<rows<<inter1<<cols<<inter2<<"integer"<<string(25-7,' ')<<yytext<<endl; cols += yyleng; return INTEGER;}
+#line 31 "lexer.lex"
+{tokens_num++;  return INTEGER;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 35 "lexer.lex"
-{tokens_num++; cout<<rows<<inter1<<cols<<inter2<<"operator"<<string(25-8,' ')<<yytext<<endl; cols += yyleng; return OPERATOR;}
+#line 32 "lexer.lex"
+{tokens_num++;  return OPERATOR;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 36 "lexer.lex"
-{tokens_num++; cout<<rows<<inter1<<cols<<inter2<<"real"<<string(25-4,' ')<<yytext<<endl; cols += yyleng; return REAL;}
+#line 33 "lexer.lex"
+{tokens_num++;  return REAL;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 37 "lexer.lex"
-{tokens_num++; cout<<rows<<inter1<<cols<<inter2<<"reserved keyword"<<string(25-16,' ')<<yytext<<endl; cols += yyleng; return RESERVED;}
+#line 34 "lexer.lex"
+{tokens_num++;  return RESERVED;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 38 "lexer.lex"
-{tokens_num++; cout<<rows<<inter1<<cols<<inter2<<"delimiter"<<string(25-9,' ')<<yytext<<endl; cols += yyleng; return DELIMITER;}
+#line 35 "lexer.lex"
+{tokens_num++;  return DELIMITER;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 39 "lexer.lex"
-{tokens_num++; cout<<rows<<inter1<<cols<<inter2<<"identifier"<<string(25-10,' ')<<yytext<<endl; cols += yyleng; return IDENTIFIER;}
+#line 36 "lexer.lex"
+{tokens_num++;  return IDENTIFIER;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 40 "lexer.lex"
-{tokens_num++; cout<<rows<<inter1<<cols<<inter2<<"unknown"<<string(25-7,' ')<<yytext<<endl; cols += yyleng; return UNKNOWN;}
+#line 37 "lexer.lex"
+{tokens_num++;  return UNKNOWN;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 41 "lexer.lex"
+#line 38 "lexer.lex"
 ECHO;
 	YY_BREAK
-#line 883 "lexer.c"
+#line 880 "lexer.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1845,7 +1842,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 41 "lexer.lex"
+#line 38 "lexer.lex"
 
 
 
