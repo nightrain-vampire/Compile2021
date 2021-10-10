@@ -25,11 +25,14 @@ STRING          \"[^\"]*\"
 OPERATOR	    \:\=|\+|\-|\*|\/|\<|\<\=|\>|\>\=|\=|\<\>
 DELIMITER       \:|\;|\,|\.|\(|\)|\[|\]|\{|\}|\[\<|\>\]|\]
 ID		        {LETTER}+({LETTER}|{DIGIT})*
+COMMENT         [\(][\*][^\*(?=\))]*[\*][\)]
+
 
 %%
 {WS}        {cols += yyleng;}
 <<EOF>>     return T_EOF;
 {NEW_LINE}              {rows++; cols = 1;}
+{COMMENT}               {cols += yyleng; return COMMENT;}
 {STRING}                {tokens_num++; cout<<rows<<inter1<<cols<<inter2<<"string"<<string(25-6,' ')<<yytext<<endl; cols += yyleng; return STRING;}
 {INTEGER}			    {tokens_num++; cout<<rows<<inter1<<cols<<inter2<<"integer"<<string(25-7,' ')<<yytext<<endl; cols += yyleng; return INTEGER;}
 {OPERATOR}		        {tokens_num++; cout<<rows<<inter1<<cols<<inter2<<"operator"<<string(25-8,' ')<<yytext<<endl; cols += yyleng; return OPERATOR;}
