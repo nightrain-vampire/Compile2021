@@ -9,6 +9,7 @@
 #define IDENTIFIER 5
 #define OPERATOR 6
 #define DELIMITER 7
+#define COMMENT 8
 #define UNKNOWN 100
 
 #endif

@@ -22,11 +22,13 @@ STRING          \"[^\"]*\"
 OPERATOR	    \:\=|\+|\-|\*|\/|\<|\<\=|\>|\>\=|\=|\<\>
 DELIMITER       \:|\;|\,|\.|\(|\)|\[|\]|\{|\}|\[\<|\>\]|\]
 ID		        {LETTER}+({LETTER}|{DIGIT})*
+COMMENT         [\(][\*][^\*(?=\))]*[\*][\)]
 
 %%
 {WS}        {cols += yyleng;}
 <<EOF>>     return T_EOF;
 {NEW_LINE}              {rows++; cols = 1;}
+{COMMENT}               {return COMMENT;}
 {STRING}                {tokens_num++;  return STRING;}
 {INTEGER}			    {tokens_num++;  return INTEGER;}
 {OPERATOR}		        {tokens_num++;  return OPERATOR;}
