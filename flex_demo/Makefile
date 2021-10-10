@@ -18,6 +18,7 @@ pjtest1:
 				./lexer tests/case_8.pcat case8
 				./lexer tests/case_9.pcat case9
 				./lexer tests/case_10.pcat case10
+				./lexer tests/case_11.pcat error_report
 
 clean:
 				@-rm -f lexer.c lexer

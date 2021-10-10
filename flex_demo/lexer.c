@@ -877,7 +877,7 @@ case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
 #line 39 "lexer.lex"
-{cols += yyleng;}
+return COMMENT;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
