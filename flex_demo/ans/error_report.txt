@@ -23,32 +23,13 @@ ROW       COL       TYPE                     TOKEN/ERROR MESSAGE
 38        17        integer                  17
 41        1         real                     123.
 41        5         identifier               x
-44        1         unknown                  
+44        1         bad character            a bad character (bell)
 46        1         identifier               xx
 47        10        identifier               yy
-50        1         string                   "abc
+51        1         string                   an unterminated string
+54        1         string                   an unterminated string
+57        1         string                   an unterminated string
+59        1         string                   "abc(*abcabcc*)"
+74        11        comment                  an unterminated comment 
 
-(* an unterminated string *)
-"
-50        37        identifier               abc
-53        1         string                   "abc(*123*)
-
-(* a terminated string *)
-"
-53        41        identifier               abc
-53        55        string                   "
-
-(* difficult cases: valid *)
-(*************)
-
-(* difficult cases: valid *)
-(*******(*****(*)
-
-(* difficult cases: valid *)
-(*123***123213**21****)
-
-(* difficult cases: valid *)
-(*"
-53        238       string                   an unterminated string
-
-The number of the tokens: 32
+The number of the tokens: 28

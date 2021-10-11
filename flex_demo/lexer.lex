@@ -18,20 +18,19 @@ WS          [ \t]+
 NEW_LINE        [\n]
 LETTER		    [A-Z]|[a-z]
 RESERVE		    (AND)|(ARRAY)|(BEGIN)|(BY)|(DIV)|(DO)|(ELSE)|(ELSIF)|(END)|(EXIT)|(FOR)|(IF)|(IN)|(IS)|(LOOP)|(MOD)|(NOT)|(OF)|(OR)|(OUT)|(PROCEDURE)|(PROGRAM)|(READ)|(RECORD)|(RETURN)|(THEN)|(TO)|(TYPE)|(VAR)|(WHILE)|(WRITE)
-STRING          \"[^\"]*\"
+STRING          \"[^\"^\n]*\"
 OPERATOR	    \:\=|\+|\-|\*|\/|\<|\<\=|\>|\>\=|\=|\<\>
 DELIMITER       \:|\;|\,|\.|\(|\)|\[|\]|\{|\}|\[\<|\>\]|\]
 ID		        {LETTER}+({LETTER}|{DIGIT})*
-BC              \uFFF9|\uFFFA|\uFFFB|\uFFFC|\uFFFD\|uFFFE|\uFFFF
-UN_STRING       \"[^\"]*
+UN_STRING       \"[^\"^\n]*\n
 
 %x COMMENT
 
 %%
-{WS}        {cols += yyleng;}
-<INITIAL><<EOF>>     return T_EOF;
+{WS}                    {cols += yyleng;}
+<INITIAL><<EOF>>        return T_EOF;
 {NEW_LINE}              {rows++; cols = 1;}
-{UN_STRING}            return UTSTRING;
+{UN_STRING}             {rows++; cols = 1; return UTSTRING;}
 {STRING}                {tokens_num++;  return STRING;}
 {INTEGER}			    {tokens_num++;  return INTEGER;}
 {OPERATOR}		        {tokens_num++;  return OPERATOR;}
@@ -39,8 +38,7 @@ UN_STRING       \"[^\"]*
 {RESERVE}		        {tokens_num++;  return RESERVED;}
 {DELIMITER}             {tokens_num++;  return DELIMITER;}
 {ID}                    {tokens_num++;  return IDENTIFIER;}
-{BC}                   return BADCHAR;
-.                       {tokens_num++;  return UNKNOWN;}
+.                       {tokens_num++;  return BADCHAR;}
 
 
 "(*"                   {cols += 2; BEGIN COMMENT; }
