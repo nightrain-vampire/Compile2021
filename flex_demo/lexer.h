@@ -9,10 +9,7 @@
 #define IDENTIFIER 5
 #define OPERATOR 6
 #define DELIMITER 7
-#define BEGCOMMENT 8
-#define COMMENT 9
-#define UTDCOMMENT 10
-#define DLWCOMMENT 11
+#define C_EOF 8
 #define UNKNOWN 100
 
 #endif

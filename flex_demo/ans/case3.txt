@@ -59,7 +59,6 @@ ROW       COL       TYPE                     TOKEN/ERROR MESSAGE
 11        12        operator                 /
 11        14        identifier               I
 11        15        delimiter                ;
-11        18        comment                  (* erroneous *)
 12        5         identifier               B
 12        7         operator                 :=
 12        10        identifier               I
@@ -94,7 +93,6 @@ ROW       COL       TYPE                     TOKEN/ERROR MESSAGE
 15        37        identifier               J
 15        39        delimiter                )
 15        40        delimiter                ;
-16        5         comment                  (* PRINT "1.50E01 -1.10E01 -9 -27" *)
 17        1         reserved keyword         END
 17        4         delimiter                ;
 

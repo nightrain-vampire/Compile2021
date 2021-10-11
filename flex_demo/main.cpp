@@ -45,7 +45,12 @@ int main(int argc, char **argv)
         int n = yylex();
         if (n == T_EOF){
             break;
-        }else {
+        }
+        else if (n == C_EOF) {
+            outfile<<rows<<inter1<<cols<<inter2<<"comment"<<string(25-7,' ')<<"an unterminated comment "<<endl;
+            break;
+        }
+        else {
             switch (n){
             case STRING:
                 //an overly long string
@@ -95,13 +100,6 @@ int main(int argc, char **argv)
                     outfile<<rows<<inter1<<cols<<inter2<<"identifier"<<string(25-10,' ')<<yytext<<endl;
                 }
                 cols += yyleng;
-                break;
-            case BEGCOMMENT:
-                outfile<<rows<<inter1<<cols<<inter2<<"comment"<<string(25-7,' ');   cols += yyleng;
-                comment = "(*";
-                break;
-            case COMMENT:
-                outfile<<rows<<inter1<<cols<<inter2<<"comment"<<string(25-7,' ')<<yytext<<endl; cols += yyleng;
                 break;
             case UNKNOWN:
                 outfile<<rows<<inter1<<cols<<inter2<<"unknown"<<string(25-7,' ')<<yytext<<endl; cols += yyleng;

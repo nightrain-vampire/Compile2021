@@ -1,29 +1,16 @@
 ROW       COL       TYPE                     TOKEN/ERROR MESSAGE
-1         1         comment                  (* valid integer *)
 2         1         integer                  11111111
-4         1         comment                  (* an out of range integer *)
 5         1         integer                  an out of range integer
-7         1         comment                  (* an very large real -- still acceptable though *)
 8         1         real                     123456789012345678901234567890.0
-10        1         comment                  (* a valid string*)
 11        1         string                   "abcdefg"
-13        1         comment                  (* an invalid string with tab in it *)
 14        1         string                   an invalid string with tab(s) in it
-16        1         comment                  (* an invalid string with many tabs in it *)
 17        1         string                   an invalid string with tab(s) in it
-19        1         comment                  (* an ok string *)
 20        1         string                   "123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345"
-22        1         comment                  (* an overly long string *)
 23        1         string                   an overly long string
-25        1         comment                  (* another ok string *)
 26        1         string                   ""
-28        1         comment                  (* another ok string *)
 29        1         string                   "(*"
-31        1         comment                  (* an ok identifier *)
 32        1         identifier               x12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234
-34        1         comment                  (* an overly long identifier *)
 35        1         identifier               an overly long identifier
-37        1         comment                  (* an ok line *)
 38        1         identifier               if
 38        4         identifier               x
 38        5         operator                 <
@@ -34,39 +21,22 @@ ROW       COL       TYPE                     TOKEN/ERROR MESSAGE
 38        15        identifier               y
 38        16        operator                 +
 38        17        integer                  17
-40        1         comment                  (* should lex as two tokens *)
 41        1         real                     123.
 41        5         identifier               x
-43        1         delimiter                (
-43        2         operator                 *
-43        4         identifier               a
-43        6         identifier               bad
-43        10        identifier               character
-43        20        delimiter                (
-43        21        identifier               bell
-43        25        delimiter                )
-43        27        operator                 *
-43        28        delimiter                )
 44        1         unknown                  
 46        1         identifier               xx
-46        3         comment                  (* an ok comment with an embedded	tab 
-and cr *)
-46        51        identifier               yy
-48        1         comment                  (* an unterminated string *)
+46        5         identifier               yy
 49        1         string                   "abc
 
 (* an unterminated string *)
 "
 49        37        identifier               abc
-49        40        comment                  (**)
-51        1         comment                  (* an unterminated string *)
 52        1         string                   "abc(*123*)
 
 (* a terminated string *)
 "
 52        41        identifier               abc
-52        44        comment                  (*abcabcc*)
-52        55        string                   "
+52        46        string                   "
 
 (* difficult cases: valid *)
 (*************)
@@ -79,17 +49,9 @@ and cr *)
 
 (* difficult cases: valid *)
 (*"
-52        238       unknown                  "
-52        239       operator                 *
-52        240       delimiter                )
-54        1         comment                  (* difficult cases: an unterminated comment *)
-55        1         delimiter                (
-55        2         operator                 *
-55        3         operator                 *
-55        4         operator                 *
-55        5         operator                 *
-55        6         integer                  123
-55        9         operator                 *
-55        10        operator                 *
+52        229       unknown                  "
+52        230       operator                 *
+52        231       delimiter                )
+55        2         comment                  an unterminated comment 
 
-The number of the tokens: 53
+The number of the tokens: 35

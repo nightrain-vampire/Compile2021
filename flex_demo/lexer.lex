@@ -23,11 +23,11 @@ OPERATOR	    \:\=|\+|\-|\*|\/|\<|\<\=|\>|\>\=|\=|\<\>
 DELIMITER       \:|\;|\,|\.|\(|\)|\[|\]|\{|\}|\[\<|\>\]|\]
 ID		        {LETTER}+({LETTER}|{DIGIT})*
 
-%x COMMENT1
+%x COMMENT
 
 %%
 {WS}        {cols += yyleng;}
-<<EOF>>     return T_EOF;
+<INITIAL><<EOF>>     return T_EOF;
 {NEW_LINE}              {rows++; cols = 1;}
 {STRING}                {tokens_num++;  return STRING;}
 {INTEGER}			    {tokens_num++;  return INTEGER;}
@@ -38,7 +38,10 @@ ID		        {LETTER}+({LETTER}|{DIGIT})*
 {ID}                    {tokens_num++;  return IDENTIFIER;}
 .                       {tokens_num++;  return UNKNOWN;}
 
-"(*"                    {BEGIN COMMENT1; return BEGCOMMENT;}
-<COMMENT>"*)"           {BEGIN INITIAL; return COMMENT;}
+"(*"                    {cols++; BEGIN COMMENT; }
+<COMMENT>. |            
+<COMMENT>\n;            
+<COMMENT>"*)"          {cols++; BEGIN INITIAL; }
+<COMMENT><<EOF>>       return C_EOF;
 %%
 
