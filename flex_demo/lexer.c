@@ -881,7 +881,7 @@ YY_RULE_SETUP
 case 11:
 YY_RULE_SETUP
 #line 41 "lexer.lex"
-{tokens_num++;  return BADCHAR;}
+{return BADCHAR;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP

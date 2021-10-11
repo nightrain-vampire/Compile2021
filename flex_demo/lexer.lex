@@ -38,7 +38,7 @@ UN_STRING       \"[^\"^\n]*\n
 {RESERVE}		        {tokens_num++;  return RESERVED;}
 {DELIMITER}             {tokens_num++;  return DELIMITER;}
 {ID}                    {tokens_num++;  return IDENTIFIER;}
-.                       {tokens_num++;  return BADCHAR;}
+.                       {return BADCHAR;}
 
 
 "(*"                   {cols += 2; BEGIN COMMENT; }

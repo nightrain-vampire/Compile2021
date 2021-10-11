@@ -56,10 +56,12 @@ int main(int argc, char **argv)
                 //an overly long string
                 if (yyleng > MAXSTRING_LEN) {
                     outfile<<rows<<inter1<<cols<<inter2<<"string"<<string(25-6,' ')<<"an overly long string"<<endl;
+                    tokens_num--;
                 }
                 //an invalid string with tab(s) in it
                 else if(string(yytext).find('\t') != string::npos) {
                     outfile<<rows<<inter1<<cols<<inter2<<"string"<<string(25-6,' ')<<"an invalid string with tab(s) in it"<<endl;
+                    tokens_num--;
                 }
                 //an ok string
                 else {
@@ -70,7 +72,8 @@ int main(int argc, char **argv)
             case INTEGER:
                 //an out of range integer
                 if (yyleng > 10 || atoll(yytext) > 2147483647) {
-                    outfile<<rows<<inter1<<cols<<inter2<<"integer"<<string(25-7,' ')<<"an out of range integer"<<endl; 
+                    outfile<<rows<<inter1<<cols<<inter2<<"integer"<<string(25-7,' ')<<"an out of range integer"<<endl;
+                    tokens_num--; 
                 }
                 //valid case
                 else {
@@ -94,6 +97,7 @@ int main(int argc, char **argv)
                 //an overly long identifier
                 if (yyleng > MAXIDENTI_LEN) {
                     outfile<<rows<<inter1<<cols<<inter2<<"identifier"<<string(25-10,' ')<<"an overly long identifier"<<endl;
+                    tokens_num--;
                 }
                 //an ok identifier
                 else {

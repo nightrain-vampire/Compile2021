@@ -32,4 +32,4 @@ ROW       COL       TYPE                     TOKEN/ERROR MESSAGE
 59        1         string                   "abc(*abcabcc*)"
 74        11        comment                  an unterminated comment 
 
-The number of the tokens: 28
+The number of the tokens: 22
