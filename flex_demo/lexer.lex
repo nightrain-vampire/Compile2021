@@ -22,6 +22,8 @@ STRING          \"[^\"]*\"
 OPERATOR	    \:\=|\+|\-|\*|\/|\<|\<\=|\>|\>\=|\=|\<\>
 DELIMITER       \:|\;|\,|\.|\(|\)|\[|\]|\{|\}|\[\<|\>\]|\]
 ID		        {LETTER}+({LETTER}|{DIGIT})*
+BC              \uFFF9|\uFFFA|\uFFFB|\uFFFC|\uFFFD\|uFFFE|\uFFFF
+UN_STRING       \"[^\"]*
 
 %x COMMENT
 
@@ -29,6 +31,7 @@ ID		        {LETTER}+({LETTER}|{DIGIT})*
 {WS}        {cols += yyleng;}
 <INITIAL><<EOF>>     return T_EOF;
 {NEW_LINE}              {rows++; cols = 1;}
+{UN_STRING}            return UTSTRING;
 {STRING}                {tokens_num++;  return STRING;}
 {INTEGER}			    {tokens_num++;  return INTEGER;}
 {OPERATOR}		        {tokens_num++;  return OPERATOR;}
@@ -36,12 +39,14 @@ ID		        {LETTER}+({LETTER}|{DIGIT})*
 {RESERVE}		        {tokens_num++;  return RESERVED;}
 {DELIMITER}             {tokens_num++;  return DELIMITER;}
 {ID}                    {tokens_num++;  return IDENTIFIER;}
+{BC}                   return BADCHAR;
 .                       {tokens_num++;  return UNKNOWN;}
 
-"(*"                    {cols++; BEGIN COMMENT; }
-<COMMENT>. |            
-<COMMENT>\n;            
-<COMMENT>"*)"          {cols++; BEGIN INITIAL; }
+
+"(*"                   {cols += 2; BEGIN COMMENT; }
+<COMMENT>.             {cols += yyleng;}
+<COMMENT>\n            {cols = 1; rows++; } 
+<COMMENT>"*)"          {cols += 2; BEGIN INITIAL; }
 <COMMENT><<EOF>>       return C_EOF;
 %%
 

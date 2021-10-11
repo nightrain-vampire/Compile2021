@@ -25,18 +25,18 @@ ROW       COL       TYPE                     TOKEN/ERROR MESSAGE
 41        5         identifier               x
 44        1         unknown                  
 46        1         identifier               xx
-46        5         identifier               yy
-49        1         string                   "abc
+47        10        identifier               yy
+50        1         string                   "abc
 
 (* an unterminated string *)
 "
-49        37        identifier               abc
-52        1         string                   "abc(*123*)
+50        37        identifier               abc
+53        1         string                   "abc(*123*)
 
 (* a terminated string *)
 "
-52        41        identifier               abc
-52        46        string                   "
+53        41        identifier               abc
+53        55        string                   "
 
 (* difficult cases: valid *)
 (*************)
@@ -49,9 +49,6 @@ ROW       COL       TYPE                     TOKEN/ERROR MESSAGE
 
 (* difficult cases: valid *)
 (*"
-52        229       unknown                  "
-52        230       operator                 *
-52        231       delimiter                )
-55        2         comment                  an unterminated comment 
+53        238       string                   an unterminated string
 
-The number of the tokens: 35
+The number of the tokens: 32

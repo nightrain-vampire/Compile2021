@@ -101,6 +101,14 @@ int main(int argc, char **argv)
                 }
                 cols += yyleng;
                 break;
+            case UTSTRING:
+                outfile<<rows<<inter1<<cols<<inter2<<"string"<<string(25-6,' ')<<"an unterminated string"<<endl;
+                cols += yyleng;
+                break;
+            case BADCHAR:
+                outfile<<rows<<inter1<<cols<<inter2<<"bad character"<<string(25-13,' ')<<"a bad character (bell)"<<endl;
+                cols += yyleng;
+                break;
             case UNKNOWN:
                 outfile<<rows<<inter1<<cols<<inter2<<"unknown"<<string(25-7,' ')<<yytext<<endl; cols += yyleng;
                 break;

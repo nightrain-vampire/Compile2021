@@ -10,6 +10,8 @@
 #define OPERATOR 6
 #define DELIMITER 7
 #define C_EOF 8
+#define UTSTRING 9
+#define BADCHAR 10
 #define UNKNOWN 100
 
 #endif
