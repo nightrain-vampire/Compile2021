@@ -1,0 +1,99 @@
+ROW       COL       TYPE                     TOKEN/ERROR MESSAGE
+1         1         reserved keyword         PROGRAM
+1         9         reserved keyword         IS
+2         5         reserved keyword         VAR
+2         9         identifier               A
+2         10        delimiter                ,
+2         12        identifier               B
+2         14        delimiter                :
+2         16        identifier               REAL
+2         21        operator                 :=
+2         24        real                     0.0
+2         27        delimiter                ;
+3         5         reserved keyword         VAR
+3         9         identifier               I
+3         10        delimiter                ,
+3         12        identifier               J
+3         14        delimiter                :
+3         16        identifier               INTEGER
+3         24        operator                 :=
+3         27        integer                  0
+3         28        delimiter                ;
+4         1         reserved keyword         BEGIN
+5         5         identifier               A
+5         7         operator                 :=
+5         10        real                     5.0
+5         13        delimiter                ;
+6         5         identifier               I
+6         7         operator                 :=
+6         10        operator                 -
+6         11        integer                  3
+6         12        delimiter                ;
+7         5         identifier               J
+7         7         operator                 :=
+7         10        identifier               I
+7         12        operator                 *
+7         14        integer                  10
+7         16        delimiter                ;
+8         5         identifier               B
+8         7         operator                 :=
+8         10        identifier               A
+8         12        operator                 +
+8         14        identifier               I
+8         15        delimiter                ;
+9         5         identifier               A
+9         7         operator                 :=
+9         10        identifier               J
+9         12        operator                 /
+9         14        identifier               B
+9         15        delimiter                ;
+10        5         identifier               J
+10        7         operator                 :=
+10        10        identifier               I
+10        12        operator                 -
+10        14        identifier               J
+10        15        delimiter                ;
+11        5         identifier               I
+11        7         operator                 :=
+11        10        identifier               J
+11        12        operator                 /
+11        14        identifier               I
+11        15        delimiter                ;
+23        5         identifier               B
+23        7         operator                 :=
+23        10        identifier               I
+23        12        operator                 -
+23        14        identifier               B
+23        15        delimiter                ;
+24        5         reserved keyword         WRITE
+24        11        delimiter                (
+24        13        string                   " A = "
+24        20        delimiter                ,
+24        22        operator                 -
+24        23        identifier               A
+24        24        delimiter                ,
+24        26        string                   " | B = "
+24        35        delimiter                ,
+24        37        identifier               B
+24        38        delimiter                )
+24        39        delimiter                ;
+25        5         reserved keyword         WRITE
+25        11        delimiter                (
+25        13        string                   ""
+25        16        delimiter                )
+25        17        delimiter                ;
+26        5         reserved keyword         WRITE
+26        11        delimiter                (
+26        13        string                   " I = "
+26        20        delimiter                ,
+26        22        identifier               I
+26        23        delimiter                ,
+26        25        string                   " |  J = "
+26        35        delimiter                ,
+26        37        identifier               J
+26        39        delimiter                )
+26        40        delimiter                ;
+61        1         reserved keyword         END
+61        4         delimiter                ;
+
+The number of the tokens: 96

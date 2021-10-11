@@ -44,10 +44,20 @@ int main(int argc, char **argv)
         }else {
             switch (n){
             case STRING:
-                outfile<<rows<<inter1<<cols<<inter2<<"string"<<string(25-6,' ')<<yytext<<endl; cols += yyleng;
+                if(yyleng > 257) {
+                    outfile<<rows<<inter1<<cols<<inter2<<"string"<<string(25-6,' ')<<" an overly long string "<<endl; cols += yyleng;
+                }
+                else {
+                    outfile<<rows<<inter1<<cols<<inter2<<"string"<<string(25-6,' ')<<yytext<<endl; cols += yyleng;
+                }
                 break;
             case INTEGER:
-                outfile<<rows<<inter1<<cols<<inter2<<"integer"<<string(25-7,' ')<<yytext<<endl; cols += yyleng;
+                if(yyleng > 10 || atoll(yytext) > 2147483647) {
+                    outfile<<rows<<inter1<<cols<<inter2<<"integer"<<string(25-7,' ')<<"an out of range integer"<<endl; cols += yyleng;
+                }
+                else {
+                    outfile<<rows<<inter1<<cols<<inter2<<"integer"<<string(25-7,' ')<<yytext<<endl; cols += yyleng;   
+                }
                 break;
             case OPERATOR:
                 outfile<<rows<<inter1<<cols<<inter2<<"operator"<<string(25-8,' ')<<yytext<<endl; cols += yyleng;
@@ -62,7 +72,14 @@ int main(int argc, char **argv)
                 outfile<<rows<<inter1<<cols<<inter2<<"delimiter"<<string(25-9,' ')<<yytext<<endl; cols += yyleng;
                 break;
             case IDENTIFIER:
-                outfile<<rows<<inter1<<cols<<inter2<<"identifier"<<string(25-10,' ')<<yytext<<endl; cols += yyleng;
+                if(yyleng > 255) {
+                    outfile<<rows<<inter1<<cols<<inter2<<"identifier"<<string(25-10,' ')<<"an overly long identifier"<<endl; cols += yyleng;
+
+                }
+                else {
+                    outfile<<rows<<inter1<<cols<<inter2<<"identifier"<<string(25-10,' ')<<yytext<<endl; cols += yyleng;
+
+                }
                 break;
             case UNKNOWN:
                 outfile<<rows<<inter1<<cols<<inter2<<"unknown"<<string(25-7,' ')<<yytext<<endl; cols += yyleng;
