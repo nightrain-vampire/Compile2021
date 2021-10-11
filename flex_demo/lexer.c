@@ -841,7 +841,7 @@ case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
 #line 33 "lexer.lex"
-{rows++; cols = 1; return UTSTRING;}
+{cols = 1; return UTSTRING;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP

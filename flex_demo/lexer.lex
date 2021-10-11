@@ -30,7 +30,7 @@ UN_STRING       \"[^\"^\n]*\n
 {WS}                    {cols += yyleng;}
 <INITIAL><<EOF>>        return T_EOF;
 {NEW_LINE}              {rows++; cols = 1;}
-{UN_STRING}             {rows++; cols = 1; return UTSTRING;}
+{UN_STRING}             {cols = 1; return UTSTRING;}
 {STRING}                {tokens_num++;  return STRING;}
 {INTEGER}			    {tokens_num++;  return INTEGER;}
 {OPERATOR}		        {tokens_num++;  return OPERATOR;}

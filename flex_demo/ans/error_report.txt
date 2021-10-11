@@ -26,9 +26,9 @@ ROW       COL       TYPE                     TOKEN/ERROR MESSAGE
 44        1         bad character            a bad character (bell)
 46        1         identifier               xx
 47        10        identifier               yy
-51        1         string                   an unterminated string
-54        1         string                   an unterminated string
-57        1         string                   an unterminated string
+50        1         string                   an unterminated string
+53        1         string                   an unterminated string
+56        1         string                   an unterminated string
 59        1         string                   "abc(*abcabcc*)"
 74        11        comment                  an unterminated comment 
 

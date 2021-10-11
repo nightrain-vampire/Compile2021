@@ -103,7 +103,7 @@ int main(int argc, char **argv)
                 break;
             case UTSTRING:
                 outfile<<rows<<inter1<<cols<<inter2<<"string"<<string(25-6,' ')<<"an unterminated string"<<endl;
-                cols += yyleng;
+                rows++;
                 break;
             case BADCHAR:
                 outfile<<rows<<inter1<<cols<<inter2<<"bad character"<<string(25-13,' ')<<"a bad character (bell)"<<endl;
