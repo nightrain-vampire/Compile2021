@@ -42,9 +42,9 @@ UN_STRING       \"[^\"^\n]*\n
 
 
 "(*"                   {cols += 2; BEGIN COMMENT; }
-<COMMENT>.             {cols += yyleng;}
 <COMMENT>\n            {cols = 1; rows++; } 
 <COMMENT>"*)"          {cols += 2; BEGIN INITIAL; }
+<COMMENT>.             {cols += yyleng;}
 <COMMENT><<EOF>>       return C_EOF;
 %%
 

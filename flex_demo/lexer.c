@@ -369,10 +369,10 @@ static const flex_int16_t yy_accept[102] =
         0,    0,    0,    0,   17,   11,    1,    2,   11,    9,
         9,    6,    5,    9,    6,    6,   10,   10,   10,   10,
        10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
-       10,   10,    9,    9,   13,   14,   13,    1,    0,    3,
+       10,   10,    9,    9,   15,   13,   15,    1,    0,    3,
         4,   12,    7,    5,    6,    9,   10,   10,   10,   10,
        10,    8,   10,   10,   10,   10,   10,   10,   10,   10,
-       10,   10,   10,   10,   10,   10,   10,   10,   15,    7,
+       10,   10,   10,   10,   10,   10,   10,   10,   14,    7,
        10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
        10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
        10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
@@ -889,20 +889,20 @@ YY_RULE_SETUP
 {cols += 2; BEGIN COMMENT; }
 	YY_BREAK
 case 13:
+/* rule 13 can match eol */
 YY_RULE_SETUP
 #line 45 "lexer.lex"
-{cols += yyleng;}
+{cols = 1; rows++; } 
 	YY_BREAK
 case 14:
-/* rule 14 can match eol */
 YY_RULE_SETUP
 #line 46 "lexer.lex"
-{cols = 1; rows++; } 
+{cols += 2; BEGIN INITIAL; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 47 "lexer.lex"
-{cols += 2; BEGIN INITIAL; }
+{cols += yyleng;}
 	YY_BREAK
 case YY_STATE_EOF(COMMENT):
 #line 48 "lexer.lex"
